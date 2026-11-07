@@ -1,0 +1,10 @@
+{
+  "name": "proofline-builtbybhavesh",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-backed business promises with human approval via Switch",
+  "scripts": {"start":"node server.mjs","test":"node --test test/*.test.mjs","agent":"node tool.mjs"},
+  "engines":{"node":">=20"},
+  "license":"MIT"
+}

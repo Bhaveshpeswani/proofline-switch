@@ -1,0 +1,30 @@
+# Local mutable business data and temporary files
+data/workspace.json
+data/workspace.json.tmp
+node_modules/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+# Agent credentials and private session data
+.switch/
+.codex/
+.claude/
+.auth/
+.auth.json
+auth.json
+*.pem
+*.key
+# Local editor, package, and recordings
+.vscode/
+.idea/
+Proofline-Raw.mp4
+Proofline-Final-Demo.mp4
+
+.env
+.env.*
+.switch/
+.codex/
+data/workspace.json
+

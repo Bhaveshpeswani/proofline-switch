@@ -1,0 +1,250 @@
+{
+  "info": {
+    "name": "Proofline - BuiltByBhavesh",
+    "description": "Local demo Postman collection. Requires node server.mjs running at 127.0.0.1:4173. Use the manager PIN printed in that terminal. Case/claim IDs depend on current state.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 - Health check",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "02 - Workspace data",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/state"
+      }
+    },
+    {
+      "name": "03 - Create a new marketing request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/cases",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"November campaign\",\n  \"rawText\": \"We ship to Tallinn next day and have at least 5 Atlas notebooks available.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "04 - Add false Berlin promise",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/cases/PL-1000/claims",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"delivery\",\n  \"key\": \"Berlin\",\n  \"value\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 - View case and evidence",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/cases/PL-1000"
+      }
+    },
+    {
+      "name": "06 - Revise claim C1 to truthful days",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/cases/PL-1000/claims/C1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"value\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "07 - Submit evidence packet",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/cases/PL-1000/submit",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "08 - Approve as manager (requires PIN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-manager-pin",
+            "value": "{{managerPin}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/cases/PL-1000/approve",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "09 - Live announcement",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/public"
+      }
+    },
+    {
+      "name": "10 - Evidence receipt",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/receipts/PL-1000"
+      }
+    },
+    {
+      "name": "11 - Simulate evidence change",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-manager-pin",
+            "value": "{{managerPin}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/facts",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"kind\": \"delivery\",\n  \"key\": \"Berlin\",\n  \"value\": 4\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "12 - Reset workspace",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-manager-pin",
+            "value": "{{managerPin}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/reset",
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:4173"
+    },
+    {
+      "key": "managerPin",
+      "value": "REPLACE_WITH_PRIVATE_PIN"
+    }
+  ]
+}

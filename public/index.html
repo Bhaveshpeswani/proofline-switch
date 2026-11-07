@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Proofline — Workspace</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+<div class="app-layout">
+ <aside class="sidebar">
+  <div class="brand"><span class="mark">P<span class="mark-dot">.</span></span><div><strong>proofline</strong><small>Evidence before promises</small></div></div>
+  <div class="nav-title">WORKSPACE</div>
+  <a class="nav active" href="/"><span>◫</span> Review room</a>
+  <a class="nav" href="/live" target="_blank"><span>↗</span> Public announcement</a>
+  <div class="sidebar-bottom"><span class="led"></span> LOCAL DEMO <span class="small-muted">BuiltByBhavesh</span><small>No paid APIs · No cloud storage</small></div>
+ </aside>
+ <main class="main">
+  <header class="top"><div class="breadcrumb">Workspace <span>/</span> Communication assurance</div><div class="top-right"><span class="pill local">● LOCAL MODE</span><a class="btn btn-outline btn-small" href="/live" target="_blank">View live site ↗</a></div></header>
+  <div class="page">
+   <div class="intro"><div><div class="eyebrow">DECISION INTELLIGENCE / 01</div><h1>Make promises you can prove.</h1><p>Turn risky announcements into evidence-backed releases. Agents investigate. People authorize. The system keeps receipts.</p></div><span class="intro-symbol">↗</span></div>
+   <div class="metrics" id="metrics"><div class="metric skeleton"></div><div class="metric skeleton"></div><div class="metric skeleton"></div></div>
+   <div class="work-grid">
+    <section class="panel inbox-panel"><div class="panel-head"><div><span class="eyebrow">01 / INBOX</span><h2>Announcements</h2></div><span class="counter" id="caseCount">0</span></div>
+      <div id="cases" class="case-list"></div>
+      <div class="compose"><h3>New request</h3><form id="newForm"><label>Internal title<input id="titleInput" required maxlength="80" placeholder="Example: Weekend delivery promise"></label><label>Proposed marketing copy<textarea id="rawInput" required maxlength="1000" rows="3" placeholder="We can deliver to Berlin within one day..."></textarea></label><button class="btn btn-dark" type="submit">Send for review <span>↗</span></button></form></div>
+    </section>
+    <section class="panel review-panel"><div class="panel-head"><div><span class="eyebrow">02 / THE EVIDENCE DESK</span><h2 id="caseTitle">Select a request</h2></div><span id="caseStatus" class="status">WAITING</span></div>
+      <div id="selected" class="review-content"><p class="muted">Pick a message from the inbox to see its evidence.</p></div>
+      <div class="review-actions" id="actions"></div>
+    </section>
+   </div>
+   <div class="bottom-grid">
+     <section class="panel"><div class="panel-head"><div><span class="eyebrow">03 / SOURCES OF TRUTH</span><h2>Operational evidence</h2></div><span class="tag" id="revision">REV 1</span></div><div id="facts" class="facts"></div><div class="fact-editor"><h3>Simulate an operational change</h3><p class="muted smaller">Edit real data to test whether approvals and public claims stay safe.</p><form id="factForm"><select id="factKind"><option value="stock">Product stock</option><option value="delivery">Delivery estimate</option><option value="returns">Return policy</option></select><select id="factKey"></select><input id="factValue" type="number" min="0" required value="0" aria-label="New value"><button class="btn btn-outline" type="submit">Update evidence</button></form></div></section>
+     <section class="panel"><div class="panel-head"><div><span class="eyebrow">04 / CHAIN OF CUSTODY</span><h2>Activity trail</h2></div><span class="tag">PERSISTENT</span></div><div class="timeline" id="events"></div></section>
+   </div>
+   <footer class="footer"><span>PROOFLINE / 2026</span><span>All operational records are fictional demo data.</span><button id="reset" class="text-btn">Reset workspace</button></footer>
+  </div>
+ </main>
+</div>
+<div id="toast" role="status" class="toast"></div>
+<script src="/app.js" defer></script>
+</body></html>
