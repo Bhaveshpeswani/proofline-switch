@@ -94,38 +94,22 @@ Most importantly, if operational evidence changes after approval, Proofline rech
 
 
 
+
 ```mermaid
-
 flowchart TD
-
-\&#x20;   H\\\[Human reviewer] --> M\\\[Mattermost team room]
-
-\&#x20;   M <--> S\\\[Switch]
-
-\&#x20;   S <--> C\\\[OpenAI Codex agent]
-
-\&#x20;   C --> T\\\[Proofline CLI tool.mjs]
-
-\&#x20;   T --> A\\\[Local Node.js API]
-
-\&#x20;   A --> E\\\[Deterministic rules engine]
-
-\&#x20;   A <--> D\\\[(JSON state and audit history)]
-
-\&#x20;   E --> P\\\[Verified evidence packet]
-
-\&#x20;   P --> G\\\[Human manager approval]
-
-\&#x20;   G --> U\\\[Public announcement]
-
-\&#x20;   D --> R{Current facts still support claims?}
-
-\&#x20;   U --> R
-
-\&#x20;   R -->|Yes| L\\\[LIVE]
-
-\&#x20;   R -->|No| W\\\[WITHHELD]
-
+    A["Human reviewer"] --> B["Mattermost team room"]
+    B <--> C["Switch"]
+    C <--> D["OpenAI Codex agent"]
+    D --> E["Proofline CLI"]
+    E --> F["Node.js API"]
+    F --> G["Verification rules"]
+    F --> H["JSON state and audit history"]
+    G --> I["Evidence packet"]
+    I --> J["Human manager approval"]
+    J --> K["Public announcement"]
+    K --> L{"Do current facts support the claims?"}
+    L -->|Yes| M["LIVE"]
+    L -->|No| N["WITHHELD"]
 ```
 
 
